@@ -51,7 +51,7 @@
       </xs:sequence>
     </xs:complexType>
     
-    <!-- Définition de la contrainte référentielle d'un  véhicule à une personne (relation de propriété) -->
+    <!-- Définition de la contrainte référentielle d'un véhicule à une personne (relation de propriété) -->
     
       <xs:key name="proprio">
         <xs:selector xpath="personne"/>
