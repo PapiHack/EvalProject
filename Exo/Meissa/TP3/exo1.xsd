@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="conference">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="article" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="authors">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="author" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="date">
+                <xs:complexType>
+                  <xs:attribute name="year" type="xs:gYear"/>
+                  <xs:attribute name="month" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="pages" type="xs:string"/>
+              <xs:element name="title" type="xs:string"/>
+              <xs:element name="isbn" type="xs:string"/>
+              <xs:element name="journal" type="xs:string"/>
+              <xs:element name="doi" type="xs:string"/>
+              <xs:element name="abstract" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

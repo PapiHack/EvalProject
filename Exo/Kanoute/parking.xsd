@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:simpleType name="nomPersonne" >
+  <xs:restriction base="xs:string" />
+</xs:simpleType>
+<xs:simpleType name="prenomPersonne">
+  <xs:restriction base="xs:string" />
+</xs:simpleType>
+<xs:simpleType name="marqueVoiture" >
+  <xs:restriction base="xs:string" />
+</xs:simpleType>
+<xs:simpleType name="immatriculationVoiture" >
+  <xs:restriction base="xs:string" />
+</xs:simpleType>
+
+  <xs:complexType name="personneType">
+    <xs:sequence>
+      <xs:element name="identifiant" type="xs:integer" />
+      <xs:element name="prenom" type="prenomPersonne" />
+      <xs:element name="nom" type="nomPersonne" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vehiculeType">
+    <xs:sequence>
+        <xs:element name="marque" type="marqueVoiture" />
+        <xs:element name="immatriculation" type="immatriculationVoiture" />
+        <xs:element name="proprietaire" type="xs:integer" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="parkingType">
+    <xs:sequence>
+      <xs:element name="personne"  type="personneType" maxOccurs="unbounded"/>
+      <xs:element name="vehicule" type="vehiculeType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+<xs:element name="parking" type="parkingType">
+    <xs:key name="idPersonne">
+        <xs:selector xpath="identifiant"/>
+        <xs:field xpath="identifiant" />
+      </xs:key>
+      <xs:keyref name="idPersonneRef" refer="idPersonne">
+            <xs:selector xpath="proprietaire" />
+            <xs:field xpath="proprietaire" />
+           </xs:keyref>
+</xs:element>
+  
+</xs:schema>

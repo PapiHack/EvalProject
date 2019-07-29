@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<parcAutomobile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="parc.xsd">
+  <personne>
+    <nom>Mbaye</nom>
+    <prenom>Papi</prenom>
+    <cin>0119942010</cin>
+    <telephones>
+      <telephone>779391561</telephone>
+      <telephone>762719971</telephone>
+    </telephones>
+  </personne>
+  
+    <personne>
+    <nom>Mbaye</nom>
+    <prenom>Derguene</prenom>
+    <cin>0119972010</cin>
+    <telephones>
+      <telephone>771322302</telephone>
+      <telephone>761377239</telephone>
+    </telephones>
+  </personne>
+  
+    <personne>
+    <nom>Kanouté</nom>
+    <prenom>Alioune Harouna</prenom>
+    <cin>0119982010</cin>
+    <telephones>
+      <telephone>771322302</telephone>
+      <telephone>761377239</telephone>
+    </telephones>
+  </personne>
+  
+  <vehicule>
+    <marque>Toyota</marque>
+    <modele>RAV4</modele>
+    <immatriculation>DK1994</immatriculation>
+    <proprietaire>0119972010</proprietaire>
+  </vehicule>
+  
+    <vehicule>
+    <marque>Mercedes</marque>
+    <modele>AMG64</modele>
+    <immatriculation>DK1997</immatriculation>
+    <proprietaire>0119942010</proprietaire>
+  </vehicule>
+  
+    <vehicule>
+    <marque>Audi</marque>
+    <modele>A7</modele>
+    <immatriculation>DK8294</immatriculation>
+    <proprietaire>0119982010</proprietaire>
+  </vehicule>
+  
+  <vehicule>
+    <marque>Porche</marque>
+    <modele>Cayenne</modele>
+    <immatriculation>DK199</immatriculation>
+    <proprietaire>0119942010</proprietaire>
+  </vehicule>
+</parcAutomobile>

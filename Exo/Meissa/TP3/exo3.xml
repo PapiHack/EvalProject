@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<biblio xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="exo3.xsd">
+  <livre>
+    <titre>Coder proprement (Clean Code: a handbook of agile softwarecraftsmanship)</titre>
+    <auteur>Robert C. Martin</auteur>
+    <auteur>Michael C. Feathers</auteur>
+    <auteur>Jeffrey J. Langr</auteur>
+    <auteur>James W. Grenning</auteur>
+    <auteur>Timothy R. Ottinger</auteur>
+    <auteur>Brett L. Schuchert</auteur>
+    <auteur>Kevin Dean Wampler</auteur>
+    <tomes>
+      <tome>
+        <pages>481</pages>
+      </tome>
+    </tomes>
+    <infosEdition>
+      <editeur>Pearson Education France</editeur>
+      <lieuEdition>Paris</lieuEdition>
+      <lieuImpression>47 bis, rue des Vinaigriers</lieuImpression>
+      <ISBN>978-0-13-235088-2</ISBN>
+    </infosEdition>
+      <avis>Excellent livre</avis>
+  </livre>
+</biblio>

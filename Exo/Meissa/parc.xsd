@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+<!-- Déclarations des éléments de type simple -->
+
+<xs:element name="nom" type="xs:string"/>
+<xs:element name="prenom" type="xs:string"/>
+<xs:element name="telephone" type="xs:string"/>
+<xs:element name="cin" type="xs:string"/>
+<xs:element name="marque" type="xs:string"/>
+<xs:element name="modele" type="xs:string"/>
+<xs:element name="immatriculation" type="xs:string"/>
+<xs:element name="proprietaire" type="xs:string"/>
+
+<!-- Déclarations des éléments de type complexe -->
+
+<xs:element name="telephones">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="telephone" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="personne">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element  ref="nom"/>
+      <xs:element  ref="prenom"/>
+      <xs:element  ref="cin"/>
+      <xs:element ref="telephones"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="vehicule">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="marque"/>
+      <xs:element ref="modele"/>
+      <xs:element ref="immatriculation"/>
+      <xs:element ref="proprietaire"/>
+    </xs:sequence>  
+  </xs:complexType>
+</xs:element>
+
+  <xs:element name="parcAutomobile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="personne" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element ref="vehicule" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+    
+    <!-- Définition de la contrainte référentielle d'un  véhicule à une personne (relation de propriété) -->
+    
+      <xs:key name="proprio">
+        <xs:selector xpath="personne"/>
+        <xs:field xpath="cin"/>
+    </xs:key>
+    
+    <xs:keyref name="vehiculeProprio" refer="proprio">
+      <xs:selector xpath="vehicule"/>
+      <xs:field xpath="proprietaire"/>
+    </xs:keyref>
+    
+  </xs:element>
+  
+</xs:schema>

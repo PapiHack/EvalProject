@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<conference xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="exo1.xsd">
+  <article>
+  <authors>
+      <author>Fall</author>
+      <author>Ibrahima</author>
+      <author>Bendraou</author>
+      <author>Reda</author>
+      <author>Gervais</author>
+      <author>Marie-Pierre</author>
+      <author>Blanc</author>
+      <author>Xavier</author>
+    </authors>
+    <date year="2013" month="06"/>
+    <pages>209-217</pages>
+    <title>
+      Towards a Full Specification and Use of Overlap Relationships
+      between Work Products in MDE Software Processes
+    </title>
+    <isbn>978-1-4799-0405-1</isbn>
+    <journal>Proceedings of the Workshop on Enabling Technologies: Infrastructure for Collaborative Enterprises, WET ICE</journal>
+    <doi>10.1109/WETICE.2013.76</doi>
+    <abstract>
+      In this paper we address the problem of modelling and using
+      overlap relationships between process workproducts. In fact, in the current
+      MDE context, the nature of software processes has drastically changed; they
+      involve workproducts which are essentially large-sized models with lots of
+      relationships of different kinds. Particularly, we have focused on the
+      overlap relationship which consists in sharing model elements between
+      process workproducts. First, we show that if such relationship is
+      completely specified during process modelling, then process engines are
+      able to use it to ensure a more optimized workproducts management which is
+      not supported by current process management approaches. Then we present our
+      software process modelling and execution approach and describe the
+      prototype of PSEE we have developed to show its feasibility.
+    </abstract>
+  </article>
+</conference>

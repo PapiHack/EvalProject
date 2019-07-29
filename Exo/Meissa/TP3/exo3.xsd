@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<!-- Déclarations des éléments de type simple -->
+	
+	<xsd:element name="titre" type="xsd:string"/>
+	<xsd:element name="auteur" type="xsd:string"/>
+	<xsd:element name="pages" type="xsd:string"/>
+	<xsd:element name="editeur" type="xsd:string"/>
+	<xsd:element name="lieuEdition" type="xsd:string"/>
+	<xsd:element name="lieuImpression" type="xsd:string"/>
+	<xsd:element name="ISBN" type="xsd:string"/>
+	<xsd:element name="nomJournal" type="xsd:string"/>
+	<xsd:element name="anneePublication" type="xsd:string"/>
+	<xsd:element name="numéroJournal" type="xsd:string"/>
+	<xsd:element name="avis" type="xsd:string"/>
+	
+	<!-- Déclarations des éléments de type complexe -->
+	
+	<xsd:element name="infosEdition">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="editeur"/>
+				<xsd:element ref="lieuEdition"/>
+				<xsd:element ref="lieuImpression"/>
+				<xsd:element ref="ISBN"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="tome">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="pages"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="tomes">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="tome" minOccurs="1" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="livre">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="titre"/>
+				<xsd:element ref="auteur" maxOccurs="unbounded"/>
+				<xsd:element ref="tomes"/>
+				<xsd:element ref="infosEdition"/>
+				<xsd:element ref="avis" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="infosPublication">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="nomJournal"/>
+				<xsd:element ref="pages"/>
+				<xsd:element ref="anneePublication"/>
+				<xsd:element ref="numéroJournal"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="article">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="titre"/>
+				<xsd:element ref="auteur" minOccurs="1" maxOccurs="unbounded"/>
+				<xsd:element ref="infosPublication"/>
+				<xsd:element ref="avis" minOccurs="0" maxOccurs="1"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:element name="biblio">
+		<xsd:complexType>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+				<xsd:element ref="livre"/>
+				<xsd:element ref="article"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

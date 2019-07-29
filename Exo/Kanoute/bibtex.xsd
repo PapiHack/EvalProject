@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="auteur" type="xs:string" />
+<xs:element name="year" type="xs:int" />
+<xs:element name="month" type="xs:int" />
+<xs:element name="page" type="xs:int" />
+<xs:element name="title" type="xs:string" />
+<xs:element name="ISBN" type="xs:string" />
+<xs:element name="journal" type="xs:string" />
+<xs:element name="doi" type="xs:string" />
+<xs:element name="abstract" type="xs:string" />
+
+<xs:element name="auteurs" >
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="auteur" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="date">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="year"  />
+      <xs:element ref="month" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="pages">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="page" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+  <xs:element name="article">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="auteurs" />
+        <xs:element ref="date" />
+        <xs:element ref="pages" />
+        <xs:element ref="title" />
+        <xs:element ref="ISBN" />
+        <xs:element ref="journal" />
+        <xs:element ref="doi" />
+        <xs:element ref="abstract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

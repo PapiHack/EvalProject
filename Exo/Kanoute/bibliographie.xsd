@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" >
+<xs:element name="titre" type="xs:string" />
+<xs:element name="auteur" type="xs:string" />
+<xs:element name="intitule" type="xs:string" />
+<xs:element name="pages" type="xs:int" />
+<xs:element name="editeur" type="xs:string" />
+<xs:element name="lieuEdition" type="xs:string" />
+<xs:element name="lieuImpression" type="xs:string" />
+<xs:element name="ISBN" type="xs:string" />
+<xs:element name="nomJournal" type="xs:string" />
+<xs:element name="anneePublication" type="xs:string" />
+<xs:element name="numeroJournal" type="xs:string" />
+<xs:element name="avis" type="xs:string" />
+
+<xs:element name="tome">
+	<xs:complexType>
+	<xs:sequence>
+	<xs:element ref="intitule"/>
+	<xs:element ref="pages" maxOccurs="unbounded"/>
+	</xs:sequence>
+	</xs:complexType>
+</xs:element>
+
+<xs:element name="tomes">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="tome" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="infoEdition" >
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="editeur" />
+      <xs:element ref="lieuEdition" />
+      <xs:element ref="lieuImpression" />
+      <xs:element ref="ISBN" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="infoPublication">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="nomJournal" />
+      <xs:element ref="pages" maxOccurs="unbounded" />
+      <xs:element ref="anneePublication" />
+      <xs:element ref="numeroJournal" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="livre">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="titre" />
+      <xs:element ref="auteur" />
+      <xs:element ref="tomes" />
+      <xs:element ref="infoEdition" maxOccurs="unbounded" />
+      <xs:element ref="avis" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="article">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="titre" />
+      <xs:element ref="auteur" />
+      <xs:element ref="infoPublication" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+  <xs:element name="bibliographie">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="livre" maxOccurs="unbounded"/>
+        <xs:element ref="article" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
