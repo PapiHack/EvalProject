@@ -7,13 +7,16 @@ Pour ce, faire nous avons opté comme démarche le `parsing` du schéma avant de
 
 Le projet est découpé trois (3) couches ou packages que sont :  
 
-- generated  
+- generated 
+ 
 Contient les classes que va généré le programme après exécution  
 
 - generator  
+
 Contient le code métier de la génération de classe  
 
 - source  
+
 Contient notre `parser` ainsi que notre classe de test.  
 
 ## Fonctionnement  
