@@ -9,41 +9,27 @@ public class ParseAndGenerate
 	
 	public static void doIt(String file) 
 	{
-
 		ArrayList<XSDElement> xsd = new ArrayList<XSDElement>();
-		ArrayList<ClassSpecification> classes = new ArrayList<ClassSpecification> ();
+		ArrayList<ClassSpecification> classes = new ArrayList<ClassSpecification>();
+		
 		try 
 		{
 			xsd = new XSDParser(file).parseShema();
-			ClassSpecification root = new ClassSpecification();
-			ClassSpecification cls = new ClassSpecification();
+			ClassSpecification root = getRootClass(xsd);
+			
 			for(XSDElement element : xsd)
 			{
-				if(element.getParentName() == null && element.getType().equals("complexe")) 
+				
+				if(element.getParentName() != null) 
 				{
-					root.setName(element.getName());
-					root.setRoot(true);
-					root.setAttributes(new ArrayList<FieldSpecification>());
-				}
-				else if(element.getParentName().equals(root.getName()) && element.getType().equals("complexe")) 
-				{
-					cls.setName(element.getName());
-					cls.setRoot(false);
-					cls.setAttributes(new ArrayList<FieldSpecification>());
-					root.getAttributes().add(new FieldSpecification(element.getName(), "ArrayList<"+ ("" + element.getName().charAt(0)).toUpperCase().concat(element.getName().substring(1, element.getName().length())) +">"));
-					String parent = element.getName();
-					for(XSDElement el : xsd) 
+					if(element.getType().equals("complexe") && element.getParentName().equals(root.getName()))
 					{
-						if(el.getParentName() == null)
-							continue;
-						if(el.getParentName().equals(parent) && el.getType().equals("simple")) 
-						{
-							cls.getAttributes().add(new FieldSpecification(el.getName(), "String"));
-						}
+						root.getAttributes().add(new FieldSpecification(element.getName(), "ArrayList<" + ("" + element.getName().charAt(0)).toUpperCase().concat(element.getName().substring(1, element.getName().length()))+ ">" ));
+						classes.add(getClasse(xsd, element.getName(), classes));
 					}
 				}
 			}
-			classes.add(root); classes.add(cls);
+			classes.add(root);
 			ClassGenerator generator = new ClassGenerator(classes);
 			generator.generate();
 		} 
@@ -51,6 +37,47 @@ public class ParseAndGenerate
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	private static ClassSpecification getClasse(ArrayList<XSDElement> xd, String parent, ArrayList<ClassSpecification> classes) 
+	{
+		ClassSpecification cls = new ClassSpecification();
+		cls.setAttributes(new ArrayList<FieldSpecification>());
+		cls.setRoot(false);
+		cls.setName(parent);
+		
+		for(XSDElement el : xd) 
+		{
+			if(parent.equals(el.getParentName()) && el.getType().equals("simple")) 
+			{
+				cls.getAttributes().add(new FieldSpecification(el.getName(), "String"));
+			}
+			if(parent.equals(el.getParentName()) && el.getType().equals("complexe")) 
+			{
+				ClassSpecification klass = getClasse(xd, el.getName(), classes);
+				classes.add(klass);
+				cls.getAttributes().add(new FieldSpecification(el.getName(), "ArrayList<" + ("" + el.getName().charAt(0)).toUpperCase().concat(el.getName().substring(1, el.getName().length()))+ ">" ));
+			}
+		}
+		
+		return cls;
+	}
+	
+	private static ClassSpecification getRootClass(ArrayList<XSDElement> xd) 
+	{
+		ClassSpecification root = new ClassSpecification();
+		root.setAttributes(new ArrayList<FieldSpecification>());
+		
+		for(XSDElement element : xd) 
+		{
+			if(element.getParentName() == null) 
+			{
+				root.setName(element.getName());
+				root.setRoot(true);
+				break;
+			}
+		}
+		return root;
 	}
 
 }

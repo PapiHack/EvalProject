@@ -1,5 +1,9 @@
 package source;
 
+import java.util.ArrayList;
+
+import generated.*;
+
 public class Main 
 {
 
@@ -7,7 +11,30 @@ public class Main
 	{
 		ParseAndGenerate.doIt("resources/schema.xsd");
 		
-
+		/*ParcAutomobile parc = new ParcAutomobile();
+		parc.setPersonne(new ArrayList<Personne>());
+		parc.setVehicule(new ArrayList<Vehicule>());
+		Personne p1 = new Personne();
+		p1.setNom("Mbaye"); p1.setPrenom("Papi"); p1.setCin("1234");
+		p1.setTelephones(new ArrayList<Telephones>());
+		Telephones t = new Telephones();
+		t.setTelephone("779391561"); p1.getTelephones().add(t);
+		Telephones t1 = new Telephones();
+		t1.setTelephone("761377239"); p1.getTelephones().add(t1);
+		Vehicule gamos = new Vehicule();
+		gamos.setImmatriculation("8294"); gamos.setMarque("Mercedes");
+		gamos.setModele("AMG 63"); gamos.setProprietaire("1234");
+		parc.getPersonne().add(p1); parc.getVehicule().add(gamos);
+		
+		try 
+		{
+			parc.save();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}*/
+		
 		/*Livre livre = new Livre();
 		livre.setTitre("livre1");
 		livre.setAuteur("auteur1");
